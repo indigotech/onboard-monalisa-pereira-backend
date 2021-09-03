@@ -15,7 +15,7 @@ const resolvers = {
   },
 };
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({ typeDefs, resolvers, playground: true });
 
 // Launch the server
 server.listen().then(({ url }) => {
