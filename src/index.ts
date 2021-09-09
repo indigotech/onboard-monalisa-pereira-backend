@@ -1,22 +1,7 @@
-import 'reflect-metadata';
-
 import { ApolloServer } from 'apollo-server';
 import { createConnection} from 'typeorm';
-import { User } from './entity/user';
-
-const resolvers = {
-    Query: {
-      hello() {
-        return 'Hello world!';
-      }
-    },
-  };
-
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`;
+import { createUser, User } from './entity/user';
+import { resolvers, typeDefs } from './schema';
 
 createConnection({
   type: 'postgres',
@@ -29,15 +14,8 @@ createConnection({
   synchronize: true,
   logging: false,
 })
-  .then((connection) => {
-    let user = new User();
-    user.firstName = 'Mona';
-    user.lastName = 'Pereira';
-    user.isActive = true;
-
-    return connection.manager.save(user).then((user) => {
-      console.log('User has been saved', user.id);
-    });
+  .then((database) => {
+    createUser(database);
   })
   .catch((error) => console.log(error));
 
