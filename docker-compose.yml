@@ -7,7 +7,7 @@ localdb:
   environment:
     - POSTGRES_USER=monakairine
     - POSTGRES_PASSWORD=123123
-    - POSTGRES_DB=databoard_db
+    - POSTGRES_DB=database
 testdb:
   image: postgres:11.2
   ports:
@@ -17,4 +17,4 @@ testdb:
   environment:
     - POSTGRES_USER=monakairine
     - POSTGRES_PASSWORD=123123
-    - POSTGRES_DB=databoard_test_db
+    - POSTGRES_DB=database_teste
