@@ -1,6 +1,6 @@
 import { gql } from 'apollo-server';
 
-interface UserResponse {
+export interface UserResponse {
   id: number;
   name: string;
   email: string;
@@ -30,24 +30,3 @@ export const typeDefs = gql`
     createUser(user: UserInput): UserResponse
   }
 `;
-
-export const resolvers = {
-
-  Query: {
-    hello: () => 'Hello World!',
-  },
-
-  Mutation: {
-    createUser: ( { user: args }: { user: UserResponse }) => {
-      const user = {
-        id: Math.floor(Math.random() * 100),
-        name: args.name,
-        email: args.email,
-        birthDate: args.birthDate,
-      };
-
-      return user;
-    },
-}
-
-}

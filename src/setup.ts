@@ -1,9 +1,10 @@
 import * as dotenv from 'dotenv';
 
 import { ApolloServer } from 'apollo-server';
-import { createUser, User } from './entity/user';
+import { createUser } from './entity/user';
 import { Connection, createConnection } from 'typeorm';
-import { resolvers, typeDefs } from './schema';
+import { resolvers } from './schema/resolvers';
+import { typeDefs } from './schema/typedefs';
 
 export async function setupDatabase(): Promise<Connection> {
   const connection = await createConnection();
