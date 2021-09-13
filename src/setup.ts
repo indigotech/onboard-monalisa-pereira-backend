@@ -1,14 +1,9 @@
-import { ApolloServer } from 'apollo-server';
-import { User } from './entity/user';
-import { Connection, createConnection } from "typeorm";
-import { resolvers, typeDefs } from './schema';
+import * as dotenv from 'dotenv';
 
-// setupDatabase()
-//   .then((database) => {
-//     console.log('db configurado');
-//     createUser(database);
-//   })
-//   .catch(console.log);
+import { ApolloServer } from 'apollo-server';
+import { createUser, User } from './entity/user';
+import { Connection, createConnection } from 'typeorm';
+import { resolvers, typeDefs } from './schema';
 
 export async function setupDatabase(): Promise<Connection> {
   const connection = await createConnection({
@@ -22,7 +17,7 @@ export async function setupDatabase(): Promise<Connection> {
     synchronize: true,
     logging: false,
   });
-  console.log('Database connected')
+  console.log('Database connected');
   return connection;
 }
 
@@ -32,6 +27,12 @@ export async function setupServer(): Promise<void> {
 }
 
 export async function setup() {
-  setupDatabase();
+  const path = process.env.TEST === 'true' ? `${__dirname}/../test.env` : `${__dirname}/../.env`
+  dotenv.config({ path })
+  setupDatabase()
+    .then((database) => {
+      createUser(database);
+    })
+    .catch(console.log);
   setupServer();
 }
