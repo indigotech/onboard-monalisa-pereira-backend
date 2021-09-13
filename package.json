@@ -2,10 +2,12 @@
   "name": "onboard-monalisa-pereira-backend",
   "version": "1.0.0",
   "description": "onboard back",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    "build": "tsc",
+    "start": "ts-node src/index.ts"
+},
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/indigotech/onboard-monalisa-pereira-backend.git"
@@ -19,6 +21,13 @@
   "dependencies": {
     "apollo-server": "3.3.0",
     "graphql": "15.5.2",
-    "graphql-playground": "1.3.17"
+    "graphql-playground": "1.3.17",
+    "pg": "8.7.1",
+    "typeorm": "0.2.37",
+    "typescript": "4.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "16.7.13",
+    "reflect-metadata": "0.1.13"
   }
 }
