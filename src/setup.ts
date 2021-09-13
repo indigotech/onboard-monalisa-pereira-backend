@@ -6,17 +6,7 @@ import { Connection, createConnection } from 'typeorm';
 import { resolvers, typeDefs } from './schema';
 
 export async function setupDatabase(): Promise<Connection> {
-  const connection = await createConnection({
-    type: 'postgres',
-    host: 'localhost',
-    port: 5432,
-    username: 'monakairine',
-    password: '123123',
-    database: 'database',
-    entities: [User],
-    synchronize: true,
-    logging: false,
-  });
+  const connection = await createConnection();
   console.log('Database connected');
   return connection;
 }
