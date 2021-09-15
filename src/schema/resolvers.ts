@@ -1,7 +1,7 @@
 import { User } from "../entity/User";
 import { getRepository } from "typeorm";
 import { UserResponse } from "./typedefs";
-import { validateUser } from "../domain/user-validation";
+import { validateUser } from "../domain/validate-user";
 
 export const resolvers = {
   Query: {
