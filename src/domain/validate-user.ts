@@ -1,7 +1,7 @@
 import { User } from "../entity/User";
 import { UserResponse } from "../schema/typedefs";
 import { getRepository } from "typeorm";
-import { validatePassword } from "./password-validation";
+import { validatePassword } from "./validate-password";
 import { AuthError, ErrorMessage } from "../error-message";
 
 export async function validateUser(user: UserResponse): Promise<void> {
