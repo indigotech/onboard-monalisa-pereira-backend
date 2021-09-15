@@ -4,7 +4,7 @@
    "port": 5432,
    "username": "monakairine",
    "password": "123123",
-   "database": "databoard_db",
+   "database": "database",
    "synchronize": true,
    "logging": false,
    "entities": [

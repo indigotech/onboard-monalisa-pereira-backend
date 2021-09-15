@@ -1,0 +1,40 @@
+{
+    "compilerOptions": {
+      "baseUrl": "src",
+      "target": "es6",
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "isolatedModules": false,
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "declaration": false,
+      "noImplicitAny": false,
+      "noImplicitUseStrict": false,
+      "removeComments": true,
+      "noLib": false,
+      "skipLibCheck": true,
+      "lib": [
+        "es2017",
+        "dom",
+        "esnext.asynciterable"
+      ],
+      "preserveConstEnums": true,
+      "suppressImplicitAnyIndexErrors": true,
+      "typeRoots": [
+        "node_modules/@types"
+      ],
+      "outDir": "dist",
+      "allowJs": true,
+    },
+    "exclude": [
+      "node_modules",
+      "dist",
+      "tsconfig-paths-dist.js",
+      "src/test/"
+    ],
+    "compileOnSave": false,
+    "buildOnSave": false,
+    "atom": {
+      "rewriteTsconfig": false
+    }
+  }

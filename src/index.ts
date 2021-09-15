@@ -1,24 +1,6 @@
-import { ApolloServer } from 'apollo-server';
-import { createConnection} from 'typeorm';
-import { createUser, User } from './entity/user';
-import { resolvers, typeDefs } from './schema';
+import * as dotenv from 'dotenv';
+import { setup } from "./setup";
 
-createConnection({
-  type: 'postgres',
-  host: 'localhost',
-  port: 5432,
-  username: 'monakairine',
-  password: '123123',
-  database: 'databoard_db',
-  entities: [User],
-  synchronize: true,
-  logging: false,
-})
-  .then((database) => {
-    createUser(database);
-  })
-  .catch((error) => console.log(error));
+dotenv.config({path: `${__dirname}/../.env`})
 
-const server = new ApolloServer({ resolvers, typeDefs });
-
-server.listen().then(({ url }) => console.log(`Running server at ${url}.`));
+setup()

@@ -1,10 +1,4 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  Connection,
-  BaseEntity,
-} from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, Connection, BaseEntity } from 'typeorm';
 
 @Entity()
 export class User extends BaseEntity {
@@ -12,21 +6,25 @@ export class User extends BaseEntity {
   id: number;
 
   @Column()
-  firstName: string;
+  name: string;
 
   @Column()
-  lastName: string;
+  email: string;
 
   @Column()
-  isActive: boolean;
+  password: string;
+
+  @Column()
+  birthDate: string;
 }
 
 export async function createUser(database: Connection) {
   const user = new User();
-  user.firstName = "Monalisa";
-  user.lastName = "Kairine";
-  user.isActive = true;
+  user.name = 'Monalisa';
+  user.email = 'mona@gmail';
+  user.password = '123456';
+  user.birthDate = '09/07/1993'
 
   const newUser = await database.manager.save(user);
-  console.log("User has been saved. user id is", newUser.id);
+  console.log('User has been saved. user id is', newUser.id);
 }
