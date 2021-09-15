@@ -1,22 +1,27 @@
+import { User } from "../entity/User";
+import { getRepository } from "typeorm";
 import { UserResponse } from "./typedefs";
+import { validateUser } from "../domain/user-validation";
 
 export const resolvers = {
-
   Query: {
-    hello: () => 'Hello World!',
+    hello: () => "Hello World!",
   },
 
   Mutation: {
-    createUser: ( { user: args }: { user: UserResponse }) => {
-      const user = {
-        id: Math.floor(Math.random() * 100),
-        name: args.name,
-        email: args.email,
-        birthDate: args.birthDate,
-      };
+    createUser: async (_: any, { user: args }: { user: UserResponse }) => {
+      const user = new User();
+      user.name = args.name;
+      user.email = args.email;
+      user.password = args.password;
+      user.birthDate = args.birthDate;
 
-      return user;
+      await validateUser(user);
+
+      const newUser = await getRepository(User).save(user);
+      return newUser;
     },
-}
+  },
+};
 
-}
+
