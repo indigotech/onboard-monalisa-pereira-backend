@@ -7,14 +7,14 @@ import { typeDefs } from './schema/typedefs';
 
 export async function setupDatabase(): Promise<Connection> {
   const connection = await createConnection();
-  console.log('Database connected');
+  console.info('Database connected');
   return connection;
 }
 
 export async function setupServer(): Promise<void> {
   const server = new ApolloServer({ resolvers, typeDefs });
   const { url } = await server.listen();
-  console.log('running on', url);
+  console.info('running on', url);
 
 }
 
