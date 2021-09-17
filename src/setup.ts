@@ -9,8 +9,16 @@ export async function setupDatabase(): Promise<Connection> {
   const connection = await createConnection({
     type: "postgres",
     url: process.env.DATABASE_URL,
+    logging: false,
+    entities: [
+       "src/entity/**/*.ts"
+    ],
+    migrations: [
+       "src/migration/**/*.ts"
+    ],
   });
   console.info('Database connected');
+  console.log('database url', process.env.DATABASE_URL)
   return connection;
 }
 
@@ -23,6 +31,7 @@ export async function setupServer(): Promise<void> {
 
 export async function setup() {
   const path = process.env.TEST === 'true' ? `${__dirname}/../test.env` : `${__dirname}/../.env`
+  console.log('path dentro do setup', path)
   dotenv.config({ path })
   setupDatabase()
   setupServer();

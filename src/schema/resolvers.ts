@@ -10,7 +10,7 @@ export const resolvers = {
   },
 
   Mutation: {
-    createUser: async (_: any, { user: args }: { user: UserResponse }) => {
+    createUser: async (_: any, { data: args }: { data: UserResponse }) => {
       const user = {
         ...new User(),
         name: args.name,
