@@ -23,7 +23,6 @@ export async function setupServer(): Promise<void> {
 
 export async function setup() {
   const path = process.env.TEST === 'true' ? `${__dirname}/../test.env` : `${__dirname}/../.env`
-  console.log(process.env.TEST, process.env.PORT)
   dotenv.config({ path })
   setupDatabase()
   setupServer();
