@@ -5,10 +5,3 @@ export class CryptoService {
     return crypto.createHash("sha256").update(value).digest("base64");
   }
 }
-
-// export function CryptoService(value: string): string {
-//     return crypto
-//       .createHash('sha256')
-//       .update(value)
-//       .digest('base64');
-//   }
