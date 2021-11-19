@@ -30,7 +30,7 @@ export const typeDefs = gql`
     birthDate: String
   }
   type Mutation {
-    createUser(user: UserInput): User
+    createUser(data: UserInput): User
   }
   type Query {
     hello: String
